@@ -1,0 +1,91 @@
+apiVersion: digital-employee/v1
+kind: DigitalEmployee
+metadata:
+  id: de_creator_comment_operator
+  name: 评论区运营官
+  alias: null
+  repo: de-creator-comment-operator
+  card_no: 5.4-3
+  group: creator
+  group_label: 自媒体从业者
+  phase: P0 首发
+  complexity: M：评论数据连接器为最大不确定项（Mock 可降级为 S），总估 6-10 人日
+  score: 22
+  price: ¥30-60/月（据 R2 调研估算，蓝海无直接竞品）
+  channels:
+  - GitHub（必备基础渠道）
+  - 小红书
+  - 抖音
+  - 腾讯WorkBuddy Skill市场
+  - Dify Marketplace
+  license: Proprietary
+  version: 1.0.0
+spec:
+  positioning: 把评论区从"成本中心"变成"选题矿藏"的运营副手
+  users: 万粉以上创作者（评论量达到人工处理瓶颈的阈值）
+  boundary: 做：评论聚合分类、高频问题提取转选题、回复话术草稿、铁粉打标；不做：自动直接发布回复（草稿必须人工确认后发出，规避人设翻车与平台风控）、不处理涉诉/公关危机评论
+  kpi: 评论处理时长从 1-2h 压缩至 ≤20 分钟；高频问题→选题转化率 ≥10%/周；回复人设一致性质检通过率 ≥95%
+  roi_summary: 月省约 30h 折 ¥750-1200 + 闭环选题的复利价值，ROI >10 倍
+  demand_refs:
+  - D08
+  - D01
+  demand_support: 充分
+  demand_evidence: 中
+runtime:
+  system_prompt: persona/system-prompt.md
+  boundary: persona/boundary.md
+  kpi: persona/kpi.md
+deliverables:
+  skills:
+  - slug: faq-clustering
+    name: 高频问题聚类
+    kind: private
+    path: skills/faq-clustering
+    version: 1.0.0
+    maturity: contract-complete
+  workflows:
+  - slug: wf-creator-comment-aggregate
+    name: 每日评论聚合分类
+    path: workflows/wf-creator-comment-aggregate
+    version: 1.0.0
+    phase: P0
+    calls:
+    - review-sentiment-tag
+  - slug: wf-creator-comment-qa-to-topic
+    name: 高频问题提取→转选题
+    path: workflows/wf-creator-comment-qa-to-topic
+    version: 1.0.0
+    phase: P0
+    calls:
+    - faq-clustering
+    - topic-kb-manage
+    - topic-duplicate-check
+  - slug: wf-creator-comment-copy
+    name: 回复话术建议
+    path: workflows/wf-creator-comment-copy
+    version: 1.0.0
+    phase: P0
+    calls:
+    - reply-copy-generator
+    - persona-tone-lib
+  - slug: wf-creator-comment-fan-tag
+    name: 铁粉识别与互动名单
+    path: workflows/wf-creator-comment-fan-tag
+    version: 1.0.0
+    phase: P1
+    calls:
+    - fan-segment-tag
+  knowledge_base: kb/
+  connectors: connectors/bindings.yaml
+external_dependencies:
+- repo: agent-skills-core
+  version: 1.0.0
+  skills:
+  - fan-segment-tag
+  - persona-tone-lib
+  - reply-copy-generator
+  - review-sentiment-tag
+  - topic-duplicate-check
+  - topic-kb-manage
+  resolution: external
+spec_only_dependencies: []
