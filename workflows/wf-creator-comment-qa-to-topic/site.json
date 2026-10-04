@@ -1,0 +1,15 @@
+{
+  "name": "wf-creator-comment-qa-to-topic",
+  "title": "高频问题提取→转选题",
+  "kind": "workflow",
+  "owner": "de-creator-comment-operator",
+  "complexity": "M",
+  "phase": "P0",
+  "one_liner": "提问类评论聚类→高频问题榜→查重后写入选题库",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "wf-creator-comment-aggregate",
+  "title": "每日评论聚合分类",
+  "kind": "workflow",
+  "owner": "de-creator-comment-operator",
+  "complexity": "M",
+  "phase": "P0",
+  "one_liner": "拉取当日评论→提问/赞美/吐槽/黑粉四分→优先级排序",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}
