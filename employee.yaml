@@ -18,7 +18,7 @@ metadata:
   - 抖音
   - 腾讯WorkBuddy Skill市场
   - Dify Marketplace
-  license: Proprietary
+  license: Apache-2.0
   version: 1.0.0
 spec:
   positioning: 把评论区从"成本中心"变成"选题矿藏"的运营副手

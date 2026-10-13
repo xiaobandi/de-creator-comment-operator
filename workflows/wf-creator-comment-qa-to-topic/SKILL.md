@@ -3,7 +3,7 @@ name: wf-creator-comment-qa-to-topic
 description: >-
   评论区运营官 的「高频问题提取→转选题」工作流：提问类评论聚类→高频问题榜→查重后写入选题库。触发方式：事件（WF1 后自动）。
   当用户要完成「高频问题提取→转选题」这件事、或触发了上述条件时使用。
-license: Proprietary
+license: Apache-2.0
 compatibility: >-
   需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
   跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。
